@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Intelligent Expense Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="introPage">
+    <h2>Welcome!</h2>
+    <label for="nameInput">Name:</label>
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <label for="budgetInput">Monthly Budget:</label>
+    <input type="number" id="budgetInput" placeholder="Enter your monthly budget">
+    <button id="continueBtn">Continue</button>
+    <div style="margin-top:20px;">
+      <b>Or select existing user:</b>
+      <div id="existingUsers" style="margin-top: 8px;"></div>
+    </div>
+  </div>
+  <div class="container" id="dashboard" style="display:none;">
+    <div class="header">
+      <div class="user" id="greet"></div>
+      <div class="streak">Streak <span id="streakCount">0</span></div>
+      <button id="logoutBtn" style="background:#ffe6b9;color:#b37043;border:none;padding:5px 12px;border-radius:14px;cursor:pointer;">Logout</button>
+    </div>
+    <div class="budget-box">
+      <h3>Remaining Budget:</h3>
+      <span class="budget-amount" id="remainAmount">₹0</span>
+      <div class="budget-progress">
+        <div class="budget-progress-inner" id="remainBar" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="spend-section">
+      <label>Amount spent yesterday:</label>
+      <div id="yesterdayspend">₹0</div>
+    </div>
+    <div class="spend-section">
+      <label>Amount spent today:</label>
+      <div class="spend-grid">
+        <button class="spend-btn" onclick="addExpense('Snacks')">Snacks</button>
+        <button class="spend-btn" onclick="addExpense('Travel')">Travel</button>
+        <button class="spend-btn" onclick="showOther()">Other</button>
+        <button class="spend-btn" onclick="showCustom()">Add Custom</button>
+      </div>
+    </div>
+    <div id="otherSuggestBox" style="display:none;">
+      <label>Select:</label>
+      <button class="suggest-btn" onclick="addExpense('Books')">Books</button>
+      <button class="suggest-btn" onclick="addExpense('Medicines')">Medicines</button>
+      <button class="suggest-btn" onclick="addExpense('Stationery')">Stationery</button>
+      <button class="suggest-btn" onclick="closeOther()">Cancel</button>
+    </div>
+    <div class="spentTotalBox">
+      <span>Today's Total Spent: </span>
+      <span id="todayTotal">₹0</span>
+    </div>
+  </div>
+  <div id="modalBackdrop" style="display:none;"></div>
+  <div id="customBox" style="display:none;">
+    <label>Expense Name:</label>
+    <input type="text" id="customName">
+    <label>Amount Spent:</label>
+    <input type="number" id="customAmt">
+    <div style="margin-top:8px; display:flex; justify-content:center;">
+      <button onclick="submitCustom()">Add</button>
+      <button onclick="closeCustom()">Cancel</button>
+    </div>
+  </div>
+  
+
+ 
+  <script src="code.js"></script>
+</body>
+</html>
